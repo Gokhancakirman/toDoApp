@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Providers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $developers = \App\Models\Developers::all();
-    $weeklyJobList = [];
-    foreach ($developers as $developer) {
-        $tasks = Providers::where('difficulty',$developer->level)->orderBy('duration','DESC')->get()->toArray();
-        $weeklyJobList[$developer->name] = Task::assignTasks($tasks);
-    }
-    return view('welcome',["weeklyJobList" => $weeklyJobList]);
-});
+Route::get('/',  [HomeController::class, 'index']);
