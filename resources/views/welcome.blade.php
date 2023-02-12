@@ -41,6 +41,7 @@
                                     <div class="card-body">
                                         <p class="card-text">Level : {{$task_info["difficulty"]}}x</p>
                                         <p class="card-text">Duration : {{$task_info["duration"]}}</p>
+                                        <p class="card-text">Provider : {{$task_info["provider"]}}</p>
                                     </div>
                                 </div>
                             @endforeach
